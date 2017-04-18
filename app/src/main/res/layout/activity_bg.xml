@@ -5,8 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.niel.circularprogresscustomview.MainActivity"
+    tools:context="com.niel.circularprogresscustomview.BgActivity"
     >
+
 
   <SeekBar
       android:id="@+id/seekBar"
@@ -16,7 +17,7 @@
 
       />
 
-  <com.niel.circularprogresscustomview.PieProgressView
+  <com.niel.circularprogresscustomview.BgProgressView
       android:id="@+id/progressPie"
       android:layout_width="150dp"
       android:layout_height="150dp"
@@ -27,14 +28,4 @@
 
 
 
-  <Button
-      android:id="@+id/btnNext"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_below="@+id/progressPie"
-      android:layout_centerHorizontal="true"
-      android:layout_marginTop="@dimen/margin_top"
-      android:text="Next"
-      android:onClick="redirect"
-      />
 </RelativeLayout>
