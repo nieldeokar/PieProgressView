@@ -22,6 +22,7 @@ public class PieProgressView extends View {
 
 
     private int mViewSize;
+    private int mCircleViewSize;
 
     private static final int DEFAULT_VIEW_SIZE = 96;
 
@@ -61,17 +62,27 @@ public class PieProgressView extends View {
         mInnerRectF.set(0, 0, mViewSize, mViewSize);
         mInnerRectF.offset((getWidth() - mViewSize) / 2, (getHeight() - mViewSize) / 2);
 
+        mInnerRectF.set(mViewSize/2- 30, mViewSize/2 -  30, mViewSize/2 + mCircleViewSize, mViewSize/2 + mCircleViewSize);
+
 
         canvas.drawArc(mInnerRectF, 0, 360, true, mBackgroundPaint);
 
 
 
-        float sweepAngle = 360 * mProgress / mMax;
+        float sweepAngleCircle = 360 * mProgress / mMax;
 
-        canvas.drawArc(mInnerRectF, mStartAngle, sweepAngle, true, mProgressPaint);
+        canvas.drawArc(mInnerRectF, mStartAngle, sweepAngleCircle, true, mProgressPaint);
 
 
 
+
+        canvas.drawRect(0, 0, mViewSize, mViewSize, mBackgroundPaint);
+
+        float sweepAngleRect = mViewSize * mProgress / mMax;
+
+        sweepAngleRect = mViewSize - sweepAngleRect;
+
+        canvas.drawRect(0, 0, sweepAngleRect, mViewSize, mProgressPaint);
 
     }
 
@@ -83,7 +94,7 @@ public class PieProgressView extends View {
         int width = resolveSize(DEFAULT_VIEW_SIZE, widthMeasureSpec);
         int height = resolveSize(DEFAULT_VIEW_SIZE, heightMeasureSpec);
         mViewSize = Math.min(width, height);
-
+        mCircleViewSize = 20;
         setMeasuredDimension(width, height);
     }
 
