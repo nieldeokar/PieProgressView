@@ -144,7 +144,7 @@ public class PieAndBGprogressView extends View {
         int width = resolveSize(DEFAULT_VIEW_SIZE, widthMeasureSpec);
         int height = resolveSize(DEFAULT_VIEW_SIZE, heightMeasureSpec);
         mViewSize = Math.min(width, height);
-        mCircleViewSize = 20;
+        mCircleViewSize = 60;
         setMeasuredDimension(width, height);
     }
 
