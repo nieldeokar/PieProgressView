@@ -5,7 +5,9 @@ import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.graphics.Typeface;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 public class PieAndBGprogressView extends View {
@@ -13,7 +15,11 @@ public class PieAndBGprogressView extends View {
     /*private static final int DEFAULT_MAX = 100;
     private static final int DEFAULT_PROGRESS = 0;
     private static final int DEFAULT_START_ANGLE = -90;
+
 */
+
+
+    private static final String TAG =PieAndBGprogressView.class.getSimpleName();
 
     private int mMax = 100;
     private int mProgress = 0;
@@ -29,48 +35,63 @@ public class PieAndBGprogressView extends View {
     private Paint mProgressPaintRect;
     private Paint mBackgroundPaintCircle;
     private Paint mBackgroundPaintRect;
+    private Paint textPaint;
 
-    int progressColor;
+    int mColorGrey;
+    int mColorRed;
 
-    private RectF mInnerRectF;
+    private RectF mCircleRectF;
 
     public PieAndBGprogressView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
         final Resources res = getResources();
 
-        int backgroundColor = res.getColor(R.color.circle);
-        progressColor = res.getColor(R.color.bg_grey);
-        int progressColorWhite = res.getColor(R.color.bg_grey);
+        mColorRed = res.getColor(R.color.bg_red);
+        mColorGrey = res.getColor(R.color.bg_grey);
+
+        int mColorWhite = res.getColor(android.R.color.white);
 
         mBackgroundPaintCircle = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mBackgroundPaintCircle.setColor(backgroundColor);
+        mBackgroundPaintCircle.setColor(mColorRed);
         mBackgroundPaintCircle.setStyle(Paint.Style.FILL);
 
         mProgressPaintCircle = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mProgressPaintCircle.setColor(progressColorWhite);
+        mProgressPaintCircle.setColor(mColorWhite);
         mProgressPaintCircle.setStyle(Paint.Style.FILL);
 
 
 
         mBackgroundPaintRect = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mBackgroundPaintRect.setColor(backgroundColor);
+        mBackgroundPaintRect.setColor(mColorGrey);
         mBackgroundPaintRect.setStyle(Paint.Style.FILL);
 
 
         mProgressPaintRect = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mProgressPaintRect.setColor(progressColor);
+        mProgressPaintRect.setColor(mColorWhite);
         mProgressPaintRect.setStyle(Paint.Style.FILL);
 
 
-        mInnerRectF = new RectF();
+
+        textPaint = new Paint();
+        textPaint.setColor(mColorRed);
+        textPaint.setTextAlign(Paint.Align.CENTER);
+        textPaint.setTextSize(48);
+        textPaint.setTypeface(Typeface.DEFAULT_BOLD);
+
+
+        mCircleRectF = new RectF();
 
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
 
-
+        /*
+         *
+         *   This section draws the rectangle
+         *
+         */
 
 
         canvas.drawRect(0, 0, mViewSize, mViewSize, mBackgroundPaintRect);
@@ -80,23 +101,37 @@ public class PieAndBGprogressView extends View {
         sweepAngle = mViewSize - sweepAngle;
 
         canvas.drawRect(0, 0, sweepAngle, mViewSize, mProgressPaintRect);
+        //Log.d(TAG,String.format("sweepAngle is : %f and  ViewSize is %d",sweepAngle,mViewSize));
+
+        if(mProgress>93){
+            canvas.drawText(String.valueOf(mProgress), sweepAngle+30, mViewSize-30, textPaint);
+            Log.d(TAG,String.format("sweepAngle  : %f and View : %d progress %d",sweepAngle+30,mViewSize-30,mProgress));
+        }else {
+            canvas.drawText(String.valueOf(mProgress), sweepAngle-30, mViewSize-30, textPaint);
+            Log.d(TAG,String.format("sweepAngle  : %f and View : %d progress %d",sweepAngle-30,mViewSize-30,mProgress));
+        }
 
 
-        mInnerRectF.set(0, 0, mViewSize, mViewSize);
-        mInnerRectF.offset((getWidth() - mViewSize) / 2, (getHeight() - mViewSize) / 2);
+        //canvas.drawText(String.valueOf(mProgress), sweepAngle-30, mViewSize-30, textPaint);
 
-        mInnerRectF.set(mViewSize/2- mCircleViewSize/2, mViewSize/2 -  mCircleViewSize/2, mViewSize/2 + mCircleViewSize, mViewSize/2 + mCircleViewSize);
+        /*
+         *
+         *   This section draws the circle arch and background circle
+         *
+         */
 
+        mCircleRectF.set(mViewSize/2- mCircleViewSize/2, mViewSize/2 -  mCircleViewSize/2,
+                mViewSize/2 + mCircleViewSize, mViewSize/2 + mCircleViewSize);
 
-        canvas.drawArc(mInnerRectF, 0, 360, true, mBackgroundPaintCircle);
+        canvas.drawArc(mCircleRectF, 0, 360, true, mBackgroundPaintCircle);
 
         float sweepAngleCircle = 360 * mProgress / mMax;
 
         if(mProgress >= 50) {
-            mProgressPaintCircle.setColor(progressColor);
+            mProgressPaintCircle.setColor(mColorGrey);
         }
 
-        canvas.drawArc(mInnerRectF, mStartAngle, sweepAngleCircle, true, mProgressPaintCircle);
+        canvas.drawArc(mCircleRectF, mStartAngle, sweepAngleCircle, true, mProgressPaintCircle);
 
 
     }
