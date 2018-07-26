@@ -1,5 +1,5 @@
 # PieProgressView
-CustomView for showing progress as shown in [this][1].
+CustomView for showing progress as shown in [this][1]. Can import and use it by changing the dimensions.
 
 
 ### Preview  
