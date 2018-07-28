@@ -16,7 +16,6 @@ public class PieAndBgActivity extends AppCompatActivity {
 
     mPieAndBGprogress = (PieAndBGprogressView) findViewById(R.id.pieAndBgProgress);
 
-    // SeekBar
     mSeekBar = (SeekBar) findViewById(R.id.seekBar);
     mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
       @Override
