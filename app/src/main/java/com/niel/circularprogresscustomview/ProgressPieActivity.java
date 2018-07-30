@@ -15,10 +15,10 @@ public class ProgressPieActivity extends AppCompatActivity {
     setContentView(R.layout.activity_progress_pie);
 
 
-    mProgressPieView = (PieProgressView) findViewById(R.id.progressPie);
+    mProgressPieView = findViewById(R.id.progressPie);
 
     // SeekBar
-    mSeekBar = (SeekBar) findViewById(R.id.seekBar);
+    mSeekBar = findViewById(R.id.seekBar);
     mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
       @Override
       public void onProgressChanged(SeekBar seekBar, int i, boolean b) {

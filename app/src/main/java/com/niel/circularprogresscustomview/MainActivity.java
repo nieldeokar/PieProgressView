@@ -26,10 +26,10 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
 
 
-    mProgressPieView = (PieProgressView) findViewById(R.id.progressPie);
+    mProgressPieView = findViewById(R.id.progressPie);
 
     // SeekBar
-    mSeekBar = (SeekBar) findViewById(R.id.seekBar);
+    mSeekBar = findViewById(R.id.seekBar);
     mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
       @Override
       public void onProgressChanged(SeekBar seekBar, int i, boolean b) {

@@ -14,10 +14,10 @@ public class BgActivity extends AppCompatActivity {
     setContentView(R.layout.activity_bg);
 
 
-    bgProgressView = (BgProgressView) findViewById(R.id.progressPie);
+    bgProgressView = findViewById(R.id.progressPie);
 
     // SeekBar
-    mSeekBar = (SeekBar) findViewById(R.id.seekBar);
+    mSeekBar = findViewById(R.id.seekBar);
     mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
       @Override
       public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
