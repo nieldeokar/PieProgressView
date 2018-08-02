@@ -10,11 +10,6 @@ import android.view.View;
 
 public class BgProgressView extends View {
 
-    /*private static final int DEFAULT_MAX = 100;
-    private static final int DEFAULT_PROGRESS = 0;
-    private static final int DEFAULT_START_ANGLE = -90;
-*/
-
     private int mMax = 100;
     private int mProgress = 0;
     private int mStartAngle = -90;
@@ -26,11 +21,6 @@ public class BgProgressView extends View {
 
     private Paint mProgressPaint;
     private Paint mBackgroundPaint;
-
-
-
-
-
 
     public BgProgressView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -44,11 +34,9 @@ public class BgProgressView extends View {
         mBackgroundPaint.setColor(backgroundColor);
         mBackgroundPaint.setStyle(Paint.Style.FILL);
 
-
         mProgressPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mProgressPaint.setColor(progressColor);
         mProgressPaint.setStyle(Paint.Style.FILL);
-
 
     }
 
@@ -82,7 +70,7 @@ public class BgProgressView extends View {
     public void setProgress(int progress) {
         if (progress > mMax || progress < 0) {
             throw new IllegalArgumentException(
-                String.format("Progress (%d) must be between %d and %d", progress, 0, mMax));
+                    String.format("Progress (%d) must be between %d and %d", progress, 0, mMax));
         }
         mProgress = progress;
 
