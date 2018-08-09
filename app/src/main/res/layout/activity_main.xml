@@ -1,39 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.niel.circularprogresscustomview.MainActivity"
-    >
+    tools:context="com.niel.circularprogresscustomview.MainActivity">
 
-  <SeekBar
-      android:id="@+id/seekBar"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_margin="@dimen/margin_top"
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_top"
 
-      />
+        />
 
-  <com.niel.circularprogresscustomview.PieProgressView
-      android:id="@+id/progressPie"
-      android:layout_width="150dp"
-      android:layout_height="150dp"
-      android:layout_centerInParent="true"
-      android:layout_margin="@dimen/margin_top"
-      />
+    <com.niel.circularprogresscustomview.PieProgressView
+        android:id="@+id/progressPie"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerInParent="true"
+        android:layout_margin="@dimen/margin_top" />
 
-
-
-  <Button
-      android:id="@+id/btnNext"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_below="@+id/progressPie"
-      android:layout_centerHorizontal="true"
-      android:layout_marginTop="@dimen/margin_top"
-      android:text="Next"
-      android:onClick="redirect"
-      />
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/progressPie"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_top"
+        android:onClick="redirect"
+        android:text="Next" />
 </RelativeLayout>
