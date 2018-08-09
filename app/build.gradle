@@ -4,6 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 
 
 android {
+
   compileSdkVersion 28
   defaultConfig {
     applicationId "com.niel.circularprogresscustomview"
@@ -19,9 +20,11 @@ android {
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
   }
+  
 }
 
 dependencies {
+
   implementation fileTree(dir: 'libs', include: ['*.jar'])
   androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
     exclude group: 'com.android.support', module: 'support-annotations'
@@ -30,6 +33,7 @@ dependencies {
   implementation 'com.android.support.constraint:constraint-layout:1.1.2'
   testImplementation 'junit:junit:4.12'
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+  
 }
 repositories {
     mavenCentral()
